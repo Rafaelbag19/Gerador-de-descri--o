@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Description</title>
+    <style>
+        body {
+            body {
+            display:flex; flex-direction:column; justify-content:center;
+            min-height:100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulário de Perfume</h1>
+    <form id="perfume-form">
+        <label for="nome_perfume">Nome do Perfume:</label>
+        <input type="text" id="nome_perfume" required><br>
+
+        <label for="marca_perfume">Marca do Perfume:</label>
+        <input type="text" id="marca_perfume" required><br>
+
+        <label for="qtd_frasco">Volume de Líquido (ml):</label>
+        <input type="number" id="qtd_frasco" required><br>
+
+        <label for="tipo_fragrancia">Tipo de Fragrância:</label>
+        <input type="text" id="tipo_fragrancia" required><br>
+
+        <label for="notas_topo">Notas de Topo (separadas por vírgula):</label>
+        <input type="text" id="notas_topo" required><br>
+
+        <label for="notas_coracao">Notas de Coração (separadas por vírgula):</label>
+        <input type="text" id="notas_coracao" required><br>
+
+        <label for="notas_fundo">Notas de Fundo (separadas por vírgula):</label>
+        <input type="text" id="notas_fundo" required><br>
+
+        <label for="atributos_fragrancia">Fixação do Perfume:</label>
+        <select id="atributos_fragrancia" required>
+            <option value="0">Baixa (3 a 4h)</option>
+            <option value="1">Média (4 a 6h)</option>
+            <option value="2">Alta (6 a 8h)</option>
+            <option value="3">Muito Alta (Mais de 8h)</option>
+        </select><br>
+
+        <label for="ocasioes_uso">Ocasião para o Perfume:</label>
+        <select id="ocasioes_uso" required>
+            <option value="0">Eventos</option>
+            <option value="1">Festas</option>
+            <option value="2">Trabalho</option>
+            <option value="3">Dia a Dia</option>
+            <option value="4">Viagens</option>
+            <option value="5">Encontros Românticos</option>
+        </select><br>
+
+        <input type="submit" value="Gerar Descrição">
+    </form>
+
+    <h2>Descrição do Perfume:</h2>
+    <textarea id="descricao_result" rows="10" cols="50" readonly></textarea>
+
+    <script>
+        const perfumeForm = document.getElementById('perfume-form');
+        const descricaoResult = document.getElementById('descricao_result');
+
+        perfumeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nomePerfume = document.getElementById('nome_perfume').value;
+            const marcaPerfume = document.getElementById('marca_perfume').value;
+            const qtdFrasco = document.getElementById('qtd_frasco').value;
+            const tipoFragrancia = document.getElementById('tipo_fragrancia').value;
+            const notasTopo = document.getElementById('notas_topo').value;
+            const notasCoracao = document.getElementById('notas_coracao').value;
+            const notasFundo = document.getElementById('notas_fundo').value;
+            const atributosFragrancia = document.getElementById('atributos_fragrancia').value;
+            const ocasioesUso = document.getElementById('ocasioes_uso').value;
+
+            const listaOcasioes = ["eventos", "festas", "o trabalho", "o dia a dia", "viagens", "encontros"];
+            const listaFixacoes = ["4 horas", "6 horas", "8 horas", "12 horas"];
+
+            const ocasiao = listaOcasioes[ocasioesUso];
+            const fixacao = listaFixacoes[atributosFragrancia];
+
+            const descricao = `
+${nomePerfume} por "${marcaPerfume}"
+
+
+O Perfume ${nomePerfume} da marca ${marcaPerfume} é uma fragrância ${tipoFragrancia} que combina notas de ${notasTopo}, ${notasCoracao} e ${notasFundo}.
+Tem uma fixação de até ${fixacao}, que é perfeita para ${ocasiao}.
+
+Notas de Topo: ${notasTopo}
+
+Notas de Coração: ${notasCoracao}
+
+Notas de Fundo: ${notasFundo}
+
+Fixação: Até ${fixacao}
+
+Ocasiões para Usar o Perfume: ${ocasiao}
+
+Volume: ${qtdFrasco}ml
+`;
+
+            descricaoResult.value = descricao;
+        });
+    </script>
+</body>
+</html>
