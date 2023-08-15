@@ -84,25 +84,20 @@
             const ocasiao = listaOcasioes[ocasioesUso];
             const fixacao = listaFixacoes[atributosFragrancia];
 
-            const descricao = `
-${nomePerfume} por "${marcaPerfume}"
-
+            const descricao = `${nomePerfume} por "${marcaPerfume}"
 
 O Perfume ${nomePerfume} da marca ${marcaPerfume} é uma fragrância ${tipoFragrancia} que combina notas de ${notasTopo}, ${notasCoracao} e ${notasFundo}.
 Tem uma fixação de até ${fixacao}, que é perfeita para ${ocasiao}.
 
 Notas de Topo: ${notasTopo}
-
 Notas de Coração: ${notasCoracao}
-
 Notas de Fundo: ${notasFundo}
 
 Fixação: Até ${fixacao}
 
 Ocasiões para Usar o Perfume: ${ocasiao}
 
-Volume: ${qtdFrasco}ml
-`;
+Volume: ${qtdFrasco}ml`;
 
             descricaoResult.value = descricao;
         });
