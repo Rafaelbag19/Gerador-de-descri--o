@@ -25,6 +25,19 @@
         <label for="qtd_frasco">Volume de Líquido (ml):</label>
         <input type="number" id="qtd_frasco" required><br>
 
+        <label for="genero">Genero do perfume:</label>
+        <select id="genero" required>
+            <option value="0">Feminino</option>
+            <option value="1">Masculino</option>
+            <option value="2">Unissex</option>
+        </select><br>
+
+        <label for="tipo_perfume">Tipo de perfume:</label>
+        <select id="tipo_perfume" required>
+            <option value="0">EDT</option>
+            <option value="1">EDP</option>
+        </select><br>
+
         <label for="tipo_fragrancia">Tipo de Fragrância:</label>
         <input type="text" id="tipo_fragrancia" required><br>
 
@@ -70,7 +83,9 @@
 
             const nomePerfume = document.getElementById('nome_perfume').value;
             const marcaPerfume = document.getElementById('marca_perfume').value;
+            const generoPerfume = document.getElementById('genero').value;
             const qtdFrasco = document.getElementById('qtd_frasco').value;
+            const tipoPerfume = document.getElementById('tipo_perfume').value;
             const tipoFragrancia = document.getElementById('tipo_fragrancia').value;
             const notasTopo = document.getElementById('notas_topo').value;
             const notasCoracao = document.getElementById('notas_coracao').value;
@@ -80,11 +95,14 @@
 
             const listaOcasioes = ["eventos", "festas", "o trabalho", "o dia a dia", "viagens", "encontros"];
             const listaFixacoes = ["4 horas", "6 horas", "8 horas", "12 horas"];
+            const listaTipo = ["Eau de Toilette", "Eau de Parfum"];
+            const listaGenero = ["Feminino", "Masculino", "Unissex"];
 
             const ocasiao = listaOcasioes[ocasioesUso];
             const fixacao = listaFixacoes[atributosFragrancia];
-
-            const descricao = `${nomePerfume} por "${marcaPerfume}"
+            const tipo = listaTipo[tipoPerfume]
+            const genero = listaGenero[generoPerfume]
+            const descricao = `${nomePerfume} por "${marcaPerfume}" ${tipo} ${genero}
 
 O Perfume ${nomePerfume} da marca ${marcaPerfume} é uma fragrância ${tipoFragrancia} que combina notas de ${notasTopo}, ${notasCoracao} e ${notasFundo}.
 Tem uma fixação de até ${fixacao}, que é perfeita para ${ocasiao}.
